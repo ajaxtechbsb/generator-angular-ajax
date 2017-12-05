@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-ajax",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generator to angular with gulp",
   "homepage": "",
   "author": {
@@ -8,16 +8,9 @@
     "email": "camilo.fernandes@ajaxtech.online",
     "url": "www.ajaxtech.online"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "yeoman-generator",
-    "angular",
-    "ajaxtech",
-    "gulp"
-  ],
+  "keywords": ["yeoman-generator", "angular", "ajaxtech", "gulp"],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
@@ -48,20 +41,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -75,9 +59,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "ajaxtechbsb/generator-angular-ajax",
   "license": "MIT"
