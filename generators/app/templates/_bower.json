@@ -1,9 +1,9 @@
 {
-  "name": "veritas",
+  "name": "<%= project_name %>",
   "description": "",
   "main": "index.js",
   "authors": [
-    "Camilo Fernandes <camilo.analista@gmail.com>"
+    "<%= name %> <<%= email %>>"
   ],
   "license": "ISC",
   "homepage": "",
