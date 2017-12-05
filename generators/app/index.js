@@ -7,30 +7,61 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the wonderful ' + chalk.red('generator-angular-ajax') + ' generator!'
+      'Welcome to the wonderful ' + chalk.red('generator-angular-ajax') + ', created by Ajax Tech!'
     ));
 
-    const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    var prompts = [{
+      type   : 'input',
+      name   : 'project_name',
+      message: 'What is you project name ? '
+    };
+
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
       this.props = props;
-    });
+    }.bind(this));
   }
 
-  writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+  writing: function () {
+    //package.json
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        project_name: this.props.project_name
+      }
     );
-  }
 
-  install() {
-    this.installDependencies();
+    //bower.json
+    this.fs.copyTpl(
+      this.templatePath('_bower.json'),
+      this.destinationPath('bower.json'), {
+        project_name: this.props.project_name
+      }
+    );
+
+    //gulpfile
+    this.fs.copyTpl(
+      this.templatePath('gulpfile.js'),
+      this.destinationPath('gulpfile.js')
+    );
+
+    //loadJS
+    this.fs.copyTpl(
+      this.templatePath('loadJs.js'),
+      this.destinationPath('loadJs.js')
+    );
+
+    //copySrc
+    this.fs.copyTpl(
+      this.templatePath('src'),
+      this.destinationPath('src')
+    );
+
+  },
+
+  install: function () {
+    this.installDependencies(); // run both npm install && bower install
+    this.npmInstall(); //npm install
+    this.bowerInstall() // bower install
   }
 };

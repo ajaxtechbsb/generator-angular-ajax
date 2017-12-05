@@ -21,12 +21,12 @@ const exec = require('child_process').exec;
 
 const currentTask = process.argv[process.argv.length - 1];
 
-//Tarefa para rodar na produção o gulp
+//run Gulp
 gulp.task('heroku:production', function(){
   runSeq('htmlMin', 'cssMin', 'jsMin', 'imgMin');
 })
 
-//Cria uma task só para observar a mudança nos arquivos, para live reload
+//watch file and live reload
 gulp.task('default', ['build'], () => {
   browserSync.init({
     server: {
@@ -45,10 +45,10 @@ gulp.task('default', ['build'], () => {
   ], ['jsMin']);
 });
 
-//task central que chama as demais em suas respectivas ordens
+//central task to run antoher tasks
 gulp.task('build', ['htmlMin', 'cssMin', 'jsMin', 'imgMin']);
 
-//mimificação de html
+//min  html
 gulp.task('htmlMin', () => {
   return gulp.src([
     './src/index.html',
@@ -59,13 +59,13 @@ gulp.task('htmlMin', () => {
     .on('end', reload);
 });
 
-//mimificação de imagens
+//min images
 gulp.task('imgMin', () => gulp.src('./src/img/**/*')
   .pipe(gulpif(isBuilding, imagemin()))
   .pipe(gulp.dest('./dist/img')))
   .on('end', reload);
 
-//mimificacáo de js
+//min js
 gulp.task('jsMin', () => {
   return allFiles
     .list()
@@ -84,7 +84,7 @@ gulp.task('jsMin', () => {
     });
 });
 
-//mimificação de css
+//min css
 gulp.task('cssMin', () => {
   return es.merge([
     gulp.src('./src/bower_components/angular-material/angular-material.min.css'),
