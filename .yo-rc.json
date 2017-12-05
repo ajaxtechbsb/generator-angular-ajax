@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Camilo Fernandes",
+      "authorEmail": "camilo.fernandes@ajaxtech.online",
+      "authorUrl": "www.ajaxtech.online"
+    }
+  }
+}
